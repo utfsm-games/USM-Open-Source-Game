@@ -1,25 +1,16 @@
-extends CharacterBody2D
+class_name Entity extends CharacterBody2D
 
+##Esto seguramente cambiara dependiendo de las decisiones que tomemos asique no tomar muy enserio
+@export var stats: Node = null
+#@export var weapon: Weapon = null
+@export var items: Node = null
+@export var ability: Node = null
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var is_dead: bool = false
 
+##Signals para cuando la entidad reciba danio tentativas
+##signal damaged
+##signal died
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+##func _ready() -> void:
+	
