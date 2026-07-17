@@ -1,7 +1,7 @@
 class_name Entity extends CharacterBody2D
 
 ##Esto seguramente cambiara dependiendo de las decisiones que tomemos asique no tomar muy enserio
-@export var stats: Node = null
+@export var stats: Stats = null
 #@export var weapon: Weapon = null
 @export var items: Node = null
 @export var ability: Node = null
