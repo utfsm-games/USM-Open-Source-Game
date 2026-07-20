@@ -1,5 +1,5 @@
 extends Resource
-class_name Stats
+class_name StatManager
 
 # @class Stats
 # @desc contains the general stats of an `Entity`, the current values are stored on the `Entity` itself
