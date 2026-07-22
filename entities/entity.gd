@@ -14,3 +14,8 @@ var is_dead: bool = false
 
 ##func _ready() -> void:
 	
+
+func take_damage(amount: float) -> void:
+	if is_dead:
+		return
+	print("recibio %.1f danio" % amount)

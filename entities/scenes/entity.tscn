@@ -4,9 +4,15 @@
 [ext_resource type="Resource" uid="uid://d2hi56q2mrpe6" path="res://entities/stats/empty.res" id="2_e5a0a"]
 [ext_resource type="Script" uid="uid://bokjxuvvi2sbo" path="res://entities/damages.gd" id="2_jebg8"]
 
-[node name="EntityBase" type="Node2D" unique_id=101334814]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf0e"]
+size = Vector2(76, 172)
+
+[node name="EntityBase" type="CharacterBody2D" unique_id=1487139771]
 script = ExtResource("1_yucbx")
 stat_manager = ExtResource("2_e5a0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=678650777]
+shape = SubResource("RectangleShape2D_hpf0e")
 
 [node name="Damages" type="Node" parent="." unique_id=1900198104]
 script = ExtResource("2_jebg8")
