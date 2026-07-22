@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://boc0ik6hvf8uh"]
+
+[ext_resource type="Script" uid="uid://duqw45pqjt8lc" path="res://weapons/weapon_slot.gd" id="1_5xk6e"]
+
+[node name="WeaponSlot" type="Node2D" unique_id=1265507104]
+script = ExtResource("1_5xk6e")
+
+[node name="HeldSprite" type="Sprite2D" parent="." unique_id=1588807322]
