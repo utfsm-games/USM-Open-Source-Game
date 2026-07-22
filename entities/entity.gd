@@ -15,6 +15,8 @@ var is_dead: bool = false
 ##func _ready() -> void:
 	
 
+# @func: take_damage
+# @desc: this is now for testing and well need a refactor soon
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
