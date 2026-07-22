@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 		if _lifetime <= 0.0:
 			queue_free()
 
+# @func: _on_hit_box_body_entered
+# @desc: Hits the first entity the projectile touches, ignoring the attacker, this is a Signal!
 func _on_hit_box_body_entered(body: Node2D) -> void:
 		var entity := body as Entity
 		if entity == null or entity == attacker:
