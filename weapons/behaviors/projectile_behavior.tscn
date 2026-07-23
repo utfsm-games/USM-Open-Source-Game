@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c5khl2mtsopq4"]
+
+[ext_resource type="Script" uid="uid://hd6um2edesmu" path="res://weapons/behaviors/projectile_behavior.gd" id="1_saeg0"]
+[ext_resource type="Texture2D" uid="uid://bljwbfu3r10v4" path="res://icon.svg" id="2_fnadg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3x1q"]
+radius = 50.0
+
+[node name="ProjectileBehavior" type="Node2D" unique_id=424757777]
+script = ExtResource("1_saeg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=61840958]
+scale = Vector2(0.78125, 0.75)
+texture = ExtResource("2_fnadg")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=62896749]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2115956771]
+shape = SubResource("CircleShape2D_u3x1q")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
