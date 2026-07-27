@@ -1,9 +1,10 @@
 class_name Entity extends CharacterBody2D
 
 ##Esto seguramente cambiara dependiendo de las decisiones que tomemos asique no tomar muy enserio
+@export var display_name: StringName = &"Entity"
 @export var stat_manager: StatManager = null
 #@export var weapon: Weapon = null
-@export var items: Node = null
+@onready var items: ItemManager = $ItemManager
 @export var ability: Node = null
 
 var is_dead: bool = false
