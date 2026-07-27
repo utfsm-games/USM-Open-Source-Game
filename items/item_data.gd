@@ -13,6 +13,10 @@ var name: StringName = &"Item"
 ## @desc texture to display in-game
 var texture: Texture2D
 
+## @attribute needs_process
+## @desc if set to `true` it will execute `on_process`, otherwise it will never do
+var needs_process: bool = false
+
 ## @func abstract on_first_pickup
 ## @desc This function triggers when picking the `Item` instance up for the first time
 @abstract
