@@ -12,7 +12,6 @@ func _init(weapon_data: Weapon) -> void:
 
 # @func: _roll_bonus
 # @desc: Picks a random stat index and a value inside the weapon's range
-# TODO: use the run's seeded RandomNumberGenerator once runs are reproducible
 func _roll_bonus() -> void:
 	if data == null or data.stat_bonus_max <= 0.0:
 		return

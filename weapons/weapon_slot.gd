@@ -50,6 +50,11 @@ func attack(direction: Vector2) -> void:
 	add_child(behavior)
 	behavior._setup(holder, weapon, _calculate_damage(), direction)
 
+# @func: _calculate_damage
+# desc: Weapon base plus the holder's base for that damage type, scaled by holder's multipliers
 func _calculate_damage() -> float:
-	#Figure out entitys grabber for dealing damage
-	return instance.data.damage_base
+	var weapon: Weapon = instance.data
+	var damages: Damages = holder.damages
+	
+	return (weapon.damage_base + damages.get_base(weapon.damage_type)) * damages.get_multiplier(weapon.damage_type)
+	
