@@ -40,3 +40,18 @@ var rage_per_dodge: Stat
 
 @export
 var rage_per_parry: Stat
+
+func get_as_array() -> Array[Stat]:
+	return [
+			health_max_hearts,
+			movement_speed,
+			parry_frames,
+			parry_invulnerability_frames,
+			dodge_perfect_frames,
+			dodge_invulnerability_frames,
+			rage_max_seconds,
+			rage_when_killed,
+			rage_bonus_on_kill,
+			rage_per_dodge,
+			rage_per_parry,
+	]

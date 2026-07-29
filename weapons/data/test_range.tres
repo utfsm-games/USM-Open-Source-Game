@@ -10,5 +10,6 @@ id = &"test_range"
 display_name = "Tes Range"
 sprite = ExtResource("3_tx8sd")
 damage_type = &"range"
+stat_bonus_max = 1.0
 behavior_scene = ExtResource("1_jr2mu")
 metadata/_custom_type_script = "uid://cxdt0pw46n4db"
