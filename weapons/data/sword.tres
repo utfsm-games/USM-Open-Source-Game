@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ousrumw33fug"]
+
+[ext_resource type="PackedScene" uid="uid://o10d5v73pdlb" path="res://weapons/behaviors/melee_swing_behavior.tscn" id="1_kb3ow"]
+[ext_resource type="Script" uid="uid://cxdt0pw46n4db" path="res://weapons/weapon.gd" id="1_oqh1j"]
+[ext_resource type="Texture2D" uid="uid://bljwbfu3r10v4" path="res://icon.svg" id="3_h18bj"]
+
+[resource]
+script = ExtResource("1_oqh1j")
+id = &"sword"
+display_name = "Sword"
+sprite = ExtResource("3_h18bj")
+stat_bonus_max = 0.3
+behavior_scene = ExtResource("1_kb3ow")
+metadata/_custom_type_script = "uid://cxdt0pw46n4db"

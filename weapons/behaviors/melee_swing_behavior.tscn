@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://o10d5v73pdlb"]
+
+[ext_resource type="Script" uid="uid://dw0fsqnc25lo5" path="res://weapons/behaviors/melee_swing_behavior.gd" id="1_hxj75"]
+[ext_resource type="Texture2D" uid="uid://bljwbfu3r10v4" path="res://icon.svg" id="2_rx5lq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3x1q"]
+size = Vector2(132, 196.5)
+
+[node name="MeleeSwingBehavior" type="Node2D" unique_id=841018742]
+script = ExtResource("1_hxj75")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276178148]
+position = Vector2(-0.375, 0.2500038)
+scale = Vector2(1.0097656, 1.5351563)
+texture = ExtResource("2_rx5lq")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=967645287]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=66336053]
+position = Vector2(0.25, -0.5)
+shape = SubResource("RectangleShape2D_u3x1q")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://by6incg2wu2rm"]
+
+[ext_resource type="PackedScene" uid="uid://c5khl2mtsopq4" path="res://weapons/behaviors/projectile_behavior.tscn" id="1_a0rlb"]
+[ext_resource type="Script" uid="uid://cxdt0pw46n4db" path="res://weapons/weapon.gd" id="2_1i8ql"]
+[ext_resource type="Texture2D" uid="uid://bljwbfu3r10v4" path="res://icon.svg" id="3_lb35b"]
+
+[resource]
+script = ExtResource("2_1i8ql")
+id = &"bow"
+display_name = "Bow"
+sprite = ExtResource("3_lb35b")
+damage_type = &"range"
+stat_bonus_max = 1.0
+behavior_scene = ExtResource("1_a0rlb")
+metadata/_custom_type_script = "uid://cxdt0pw46n4db"
