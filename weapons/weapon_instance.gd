@@ -21,15 +21,15 @@ func _roll_bonus() -> void:
 	bonus_value = randf_range(data.stat_bonus_min, data.stat_bonus_max)
 
 # @func: apply_to
-# @desc: Adds the rolled bonus to the holder's stat
+# @desc: Adds the rolled bonus to the holder's stat, when Equiped
 func apply_to(holder: Entity) -> void:
 	var stat: Stat = _get_stat(holder)
 	if stat == null:
 		return
 	stat.add_multiplier(bonus_value)
 
-# @func remove_from
-# @desc Reverts the rolled bonus. Called by WeaponSlot on unequip
+# @func: remove_from
+# @desc: Reverts the rolled bonus. Called by WeaponSlot on unequip
 func remove_from(holder: Entity) -> void:
 	var stat: Stat = _get_stat(holder)
 	if stat == null:
@@ -44,7 +44,7 @@ func _get_stat(holder: Entity) -> Stat:
 	return holder.stat_manager.get_as_array()[bonus_index]
 
 # @func get_bonus_text
-# @desc Text to show in-game"
+# @desc Text to show in-game
 func get_bonus_text() -> String:
 	if bonus_index < 0:
 		return ""
