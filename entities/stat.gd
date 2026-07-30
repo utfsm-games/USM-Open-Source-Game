@@ -55,9 +55,9 @@ func add_multiplier(value: float) -> void:
 # @func remove_multiplier
 # @desc Removes `value` to `multiplier`, clamped to `MULTIPLIER_MIN` and `MULTIPLIER_MAX`
 # @attr value Must be > 0
-func remove_multiplier(value: int) -> void:
+func remove_multiplier(value: float) -> void:
 	if (value <= 0): return
-	multiplier = clamp(multiplier + value, MULTIPLIER_MIN, MULTIPLIER_MAX)
+	multiplier = clamp(multiplier - value, MULTIPLIER_MIN, MULTIPLIER_MAX)
 
 # @func set_multiplier
 # @desc sets `multiplier` to `value`, clamped to `MULTIPLIER_MIN` and `MULTIPLIER_MAX`

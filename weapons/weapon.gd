@@ -20,6 +20,10 @@ class_name Weapon
 # @desc: Base weapon damage before applying Entity's damage modifiers 
 @export var damage_base: float = 1.0
 
+# @desc: Range for the random stat bonus rolled when this weapon spawns
+@export var stat_bonus_min: float = 0.0
+@export var stat_bonus_max: float = 0.0
+
 # @desc: Knockback applied to Entity's when damaged
 @export var knockback: float = 1.0
 

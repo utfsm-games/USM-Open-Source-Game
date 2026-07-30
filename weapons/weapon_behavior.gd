@@ -37,7 +37,7 @@ func apply_hit(target: Entity) -> void:
 		
 		if target == null or target.is_dead: 
 			return
-
+		
 		target.take_damage(damage)  ##Integrate on entity 
 		if weapon.knockback > 0.0:
 			target.velocity += direction * weapon.knockback
