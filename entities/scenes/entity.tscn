@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0kl73b2vi0t4" path="res://entities/entity.gd" id="1_yucbx"]
 [ext_resource type="Resource" uid="uid://d2hi56q2mrpe6" path="res://entities/stats/empty.res" id="2_e5a0a"]
 [ext_resource type="Script" uid="uid://bokjxuvvi2sbo" path="res://entities/damages.gd" id="2_jebg8"]
+[ext_resource type="Script" uid="uid://e5h24ujf05hy" path="res://entities/defenses.gd" id="4_e5a0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf0e"]
 size = Vector2(76, 172)
@@ -17,3 +18,6 @@ shape = SubResource("RectangleShape2D_hpf0e")
 [node name="Damages" type="Node" parent="." unique_id=1900198104]
 script = ExtResource("2_jebg8")
 metadata/_custom_type_script = "uid://bokjxuvvi2sbo"
+
+[node name="Defenses" type="Node" parent="." unique_id=1226204691]
+script = ExtResource("4_e5a0a")
