@@ -7,6 +7,7 @@ class_name Entity extends CharacterBody2D
 #@export var weapon: Weapon = null
 @onready var damages: Damages = $Damages
 @onready var items: ItemManager = $ItemManager
+@onready var defenses: Defenses = get_node_or_null("Defenses")
 @export var ability: Node = null
 
 var is_dead: bool = false
@@ -23,16 +24,22 @@ func _ready() -> void:
 
 # @func: take_damage
 # @desc: Rest health, emits damaged, and kills the entity if health reaches 0
-func take_damage(amount: float) -> void:
+func take_damage(amount: float) -> Defenses.Result:
 	if is_dead or amount <= 0.0:
-		return
+		return Defenses.Result.NONE
 	
+	if defenses != null:
+		var result := defenses.intercept()
+		if result != Defenses.Result.NONE:
+			return result
 	health = maxf(health - amount, 0.0)
 	damaged.emit(amount)
 	print("recibio %.1f danio" % amount)
 	
 	if health <= 0.0:
 		_die()
+		
+	return Defenses.Result.NONE
 
 # @func: _die
 # @desc: Makes the entity dead emits die and removes it from the scene

@@ -34,10 +34,10 @@ func get_param(key: StringName, default: Variant) -> Variant:
 # @func: apply_hit
 # @desc: Applies damage and knockback to target. (Called by behaivor scenes on hit)
 func apply_hit(target: Entity) -> void:
-		
-		if target == null or target.is_dead: 
-			return
-		
-		target.take_damage(damage)  ##Integrate on entity 
-		if weapon.knockback > 0.0:
-			target.velocity += direction * weapon.knockback
+	if target == null or target.is_dead: 
+		return
+	var result := target.take_damage(damage) 
+	if result != Defenses.Result.NONE:
+		return
+	if weapon.knockback > 0.0:
+		target.velocity += direction * weapon.knockback
