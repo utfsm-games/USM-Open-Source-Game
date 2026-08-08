@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://gmquxadi4w4r"]
+
+[ext_resource type="Script" uid="uid://bd2l4o1awc3vq" path="res://floor/rooms/room.gd" id="1_fm5lv"]
+
+[node name="Room" type="Node2D" unique_id=948738299]
+script = ExtResource("1_fm5lv")
+
+[node name="LayerTop" type="TileMapLayer" parent="." unique_id=868446407]
+
+[node name="LayerMiddle" type="TileMapLayer" parent="." unique_id=732453515]
+
+[node name="LayerBottom" type="TileMapLayer" parent="." unique_id=79353727]
+
+[node name="AnchorPoints" type="Node2D" parent="." unique_id=1569896732]
+
+[node name="Entities" type="Node2D" parent="." unique_id=1144948521]
