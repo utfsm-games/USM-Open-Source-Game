@@ -29,7 +29,7 @@ func get_rooms_pointing(tag: StringName, direction: Direction.Type) -> Array[Roo
 	return scenes
 
 
-# TODO: `RoomManager` should not handle this or maybe should have a function
+# TODO: `RoomManager` should not handle this or maybe move it to a function
 func _init() -> void:
 	# TODO: Should probably refactor ts so it adds the tags to the dictionary so is faster
 	# Here we make sure every tag was defined and also it prevent typos

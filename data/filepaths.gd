@@ -1,7 +1,7 @@
 class_name FilePaths
 
-## @class helper FilePaths
-## @desc helps with file paths operations
+## @class utility FilePaths
+## @desc Does file paths operations
 
 const room: Dictionary = {
 	"tag": "res://data/rooms/tags.json",

@@ -32,6 +32,8 @@ static func load_from(relative_path: String) -> Room:
 func load() -> Room:
 	return load(get_path_scene()).instantiate() as Room
 
+## @func helper string
+## @desc Should only be used for debug
 func string() -> String:
 	return "scene_path: %s,metadata_path: %s,anchor_points: %s,offset: %s,size: %s,tags: %s" % [path.scene, path.metadata, anchor_points, offset, size, tags]
 

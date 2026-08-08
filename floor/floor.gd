@@ -31,8 +31,11 @@ func register_room_cells(cells: Array[Vector3i]) -> void:
 	for cell in cells:
 		used_cells[cell] = true
 
+## @func can_put_room
+## @not_ready
+## @desc verifies `new_room.size` can fit on the `Floor`
+# TODO: Finish this function
 func can_put_room(new_room: Room, upper_left_corner: Vector2i) -> bool:
-
 	return true
 
 ## @func put_room
@@ -70,6 +73,8 @@ func put_room(new_room: Room, upper_left_corner: Vector2i) -> void:
 	
 	add_child(new_room)
 
+## @func generate_spawn
+## @desc Initial stage of `Floor` generation
 func generate_spawn() -> Room:
 	var files: PackedStringArray = room_manager.tag_to_room_files["spawn"]
 	var file: String = files.get(randi() % files.size())
@@ -77,24 +82,34 @@ func generate_spawn() -> Room:
 	put_room(room, Vector2i(0, 0))
 	return room
 
+## @func generate_branch
+## @desc goes to an `AnchorPoint` and starts generating `Room`s, unless the step exceeds `max_branch_size`
 func generate_branch(anchor_point: AnchorPoint, step: int) -> void:
 	if step >= max_branch_size: return
 	if anchor_point.desired_tags.size() == 0: return
+
 	var desired_tag: StringName = anchor_point.desired_tags.pick_random()
 	var next_direction: Direction.Type = Direction.opposite(anchor_point.direction_towards_center)
 	var room_data: RoomData = room_manager.get_rooms_pointing(desired_tag, next_direction).pick_random()
-	if room_data == null:
-		return
+
+	# No suitable room
+	if room_data == null: return
+
+	# TODO: should refactor `AnchorPoint` to MAYBE make then a tile instead of a `Marker2D`, should in theory be easier than transforming local_to_map
 	var selected_anchor_point_local_position: Vector2i = room_data.anchor_points[next_direction].pick_random()
 	var room: Room = room_data.load()
 	var anchor_point_position: Vector2i = room.layers[1].local_to_map(anchor_point.position)
 	var upper_left_corner: Vector2i = anchor_point_position + Direction.as_vector(next_direction) - selected_anchor_point_local_position
+
+	# FIXME make sure anchor_points are not repeated
 	if can_put_room(room, upper_left_corner):
 		put_room(room, upper_left_corner)
 		var new_anchor_points: Array[AnchorPoint] = room.anchor_points
 		for new_anchor_point in new_anchor_points:
 			generate_branch(new_anchor_point, step + 1)
 
+## @func generate_floor
+## @desc main function for `Floor` generation
 func generate_floor() -> void:
 	var spawn_room: Room = generate_spawn()
 	var anchor_points: Array[AnchorPoint] = spawn_room.anchor_points
