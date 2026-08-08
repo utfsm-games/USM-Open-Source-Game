@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://cndw7gduyc27g"]
+
+[ext_resource type="Script" uid="uid://qqkkkoo7k2j7" path="res://floor/rooms/room_data.gd" id="1_8tmyt"]
+
+[resource]
+script = ExtResource("1_8tmyt")
+path = {
+&"metadata": "default/fight.tres",
+&"scene": "default/fight.tscn"
+}
+anchor_points = [[Vector2i(15, 12)], [Vector2i(0, 5)], [Vector2i(5, 0)], [Vector2i(20, 3)]]
+offset = Vector2i(-10, -7)
+size = Vector2i(21, 13)
+tags = PackedStringArray("fight")
