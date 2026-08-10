@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://cdu7gprmn5w8m"]
+
+[ext_resource type="Script" uid="uid://qqkkkoo7k2j7" path="res://floor/rooms/room_data.gd" id="1_t885h"]
+
+[resource]
+script = ExtResource("1_t885h")
+path = {
+&"metadata": "default/spawn.tres",
+&"scene": "default/spawn.tscn"
+}
+anchor_points = [[Vector2i(3, 7)], [Vector2i(0, 3)], [Vector2i(4, 0)], [Vector2i(7, 4)]]
+offset = Vector2i(-4, -4)
+size = Vector2i(8, 8)
+tags = PackedStringArray("spawn")

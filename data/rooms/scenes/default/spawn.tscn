@@ -1,0 +1,35 @@
+[gd_scene format=4 uid="uid://dlw5vw8pva1v2"]
+
+[ext_resource type="PackedScene" uid="uid://gmquxadi4w4r" path="res://floor/rooms/scenes/room.tscn" id="1_wq3uo"]
+[ext_resource type="TileSet" uid="uid://id3m6axj4g3f" path="res://floor/rooms/tilemaps/resources/dungeon.tres" id="2_6hvuv"]
+[ext_resource type="Script" uid="uid://dbtll50j7k0qd" path="res://floor/anchor_point.gd" id="3_wq3uo"]
+
+[node name="Room" unique_id=948738299 instance=ExtResource("1_wq3uo")]
+tags = Array[StringName]([&"spawn"])
+
+[node name="LayerMiddle" parent="." index="1" unique_id=732453515]
+tile_map_data = PackedByteArray("AAD8//z/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAD8/wMAAAAAAAEAAAD9//z/AAAAAAEAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAEAAAD+//z/AAAAAAEAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAEAAAD///z/AAAAAAEAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAEAAAAAAPz/AAAAAAEAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAPz/AAAAAAEAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAEAAAACAPz/AAAAAAEAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAEAAAADAPz/AAAAAAEAAAADAP3/AAAAAAEAAAADAP7/AAAAAAEAAAADAP//AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAA=")
+tile_set = ExtResource("2_6hvuv")
+
+[node name="DoorTop" type="Marker2D" parent="AnchorPoints" parent_id_path=PackedInt32Array(1569896732) index="0" unique_id=1403201751]
+position = Vector2(1, -250)
+script = ExtResource("3_wq3uo")
+direction_towards_center = 2
+desired_tags = Array[StringName]([&"corridor", &"fight"])
+
+[node name="DoorRight" type="Marker2D" parent="AnchorPoints" parent_id_path=PackedInt32Array(1569896732) index="1" unique_id=806070708]
+position = Vector2(249, 1)
+script = ExtResource("3_wq3uo")
+direction_towards_center = 3
+desired_tags = Array[StringName]([&"corridor", &"fight"])
+
+[node name="DoorLeft" type="Marker2D" parent="AnchorPoints" parent_id_path=PackedInt32Array(1569896732) index="2" unique_id=1543038125]
+position = Vector2(-252, -1)
+script = ExtResource("3_wq3uo")
+direction_towards_center = 1
+desired_tags = Array[StringName]([&"corridor", &"fight"])
+
+[node name="DoorBottom" type="Marker2D" parent="AnchorPoints" parent_id_path=PackedInt32Array(1569896732) index="3" unique_id=1712072040]
+position = Vector2(-1, 247)
+script = ExtResource("3_wq3uo")
+desired_tags = Array[StringName]([&"corridor", &"fight"])

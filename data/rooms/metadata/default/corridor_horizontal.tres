@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://bvbdj3cy1nsvx"]
+
+[ext_resource type="Script" uid="uid://qqkkkoo7k2j7" path="res://floor/rooms/room_data.gd" id="1_jnxop"]
+
+[resource]
+script = ExtResource("1_jnxop")
+path = {
+&"metadata": "default/corridor_horizontal.tres",
+&"scene": "default/corridor_horizontal.tscn"
+}
+anchor_points = [[], [Vector2i(0, 3)], [], [Vector2i(17, 3)]]
+offset = Vector2i(-9, -3)
+size = Vector2i(18, 6)
+tags = PackedStringArray("corridor")
