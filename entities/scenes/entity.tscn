@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf0e"]
 size = Vector2(76, 172)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3x1q"]
+size = Vector2(120, 140)
+
 [node name="EntityBase" type="CharacterBody2D" unique_id=1487139771]
 script = ExtResource("1_yucbx")
 stat_manager = ExtResource("2_e5a0a")
@@ -21,3 +24,9 @@ metadata/_custom_type_script = "uid://bokjxuvvi2sbo"
 
 [node name="Defenses" type="Node" parent="." unique_id=1226204691]
 script = ExtResource("4_e5a0a")
+
+[node name="ParryHitbox" type="Area2D" parent="." unique_id=2016556109]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=60853453]
+position = Vector2(60, 0)
+shape = SubResource("RectangleShape2D_u3x1q")
