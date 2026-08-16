@@ -36,7 +36,7 @@ func get_param(key: StringName, default: Variant) -> Variant:
 func apply_hit(target: Entity) -> void:
 	if target == null or target.is_dead: 
 		return
-	var result := target.take_damage(damage) 
+	var result := target.take_damage(damage, self)
 	if result != Defenses.Result.NONE:
 		return
 	if weapon.knockback > 0.0:

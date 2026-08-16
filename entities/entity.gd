@@ -24,12 +24,12 @@ func _ready() -> void:
 
 # @func: take_damage
 # @desc: Rest health, emits damaged, and kills the entity if health reaches 0
-func take_damage(amount: float) -> Defenses.Result:
+func take_damage(amount: float, source: WeaponBehavior = null) -> Defenses.Result:
 	if is_dead or amount <= 0.0:
 		return Defenses.Result.NONE
 	
 	if defenses != null:
-		var result := defenses.intercept()
+		var result := defenses.intercept(source)
 		if result != Defenses.Result.NONE:
 			return result
 	health = maxf(health - amount, 0.0)
