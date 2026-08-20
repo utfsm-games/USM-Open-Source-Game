@@ -6,8 +6,9 @@ class_name Entity extends CharacterBody2D
 
 #@export var weapon: Weapon = null
 @onready var damages: Damages = $Damages
+@onready var rage: Rage = $Rage
 @onready var items: ItemManager = $ItemManager
-@onready var defenses: Defenses = get_node_or_null("Defenses")
+@onready var defenses: Defenses = $Defenses
 @export var ability: Node = null
 
 var is_dead: bool = false

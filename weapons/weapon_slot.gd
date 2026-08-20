@@ -56,5 +56,5 @@ func _calculate_damage() -> float:
 	var weapon: Weapon = instance.data
 	var damages: Damages = holder.damages
 	
-	return (weapon.damage_base + damages.get_base(weapon.damage_type)) * damages.get_multiplier(weapon.damage_type)
+	return (weapon.damage_base + damages.get_base(weapon.damage_type)) * damages.get_multiplier(weapon.damage_type) * holder.rage.get_damage_multiplier()
 	
