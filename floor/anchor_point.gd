@@ -15,3 +15,9 @@ var direction_towards_center: Direction.Type = Direction.UP
 var desired_tags: Array[StringName] = ["default"]
 
 # TODO: Make `entrance_size` to make multi tile entrances
+
+func get_outwards_direction() -> Direction.Type:
+	return Direction.opposite(direction_towards_center)
+
+func select_tag() -> StringName:
+	return desired_tags.pick_random()

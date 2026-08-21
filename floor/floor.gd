@@ -35,7 +35,13 @@ func register_room_cells(cells: Array[Vector3i]) -> void:
 ## @not_ready
 ## @desc verifies `new_room.size` can fit on the `Floor`
 # TODO: Finish this function
-func can_put_room(new_room: Room, upper_left_corner: Vector2i) -> bool:
+func can_put_room(new_room_data: RoomData, upper_left_corner: Vector2i) -> bool:
+	var room_size: Vector2i = new_room_data.size
+	for y in range(upper_left_corner.y, upper_left_corner.y + room_size.y):
+		for x in range(upper_left_corner.x, upper_left_corner.x + room_size.x):
+			if used_cells.has(Vector3i(x, y, 0)): return false
+			if used_cells.has(Vector3i(x, y, 1)): return false
+			if used_cells.has(Vector3i(x, y, 2)): return false
 	return true
 
 ## @func put_room
@@ -58,18 +64,20 @@ func put_room(new_room: Room, upper_left_corner: Vector2i) -> void:
 		var source_id: int = new_room_layer.get_cell_source_id(coords)
 		var atlas_coords: Vector2i = new_room_layer.get_cell_atlas_coords(coords)
 		var alternative_tile: int = new_room_layer.get_cell_alternative_tile(coords)
-		layer.set_cell(coords - tile_offset + upper_left_corner, source_id, atlas_coords, alternative_tile)
+		var new_coords = coords - tile_offset + upper_left_corner
+		layer.set_cell(new_coords, source_id, atlas_coords, alternative_tile)
+		used_cells[Vector3i(new_coords.x, new_coords.y, tile.z)] = true
 	for layer in new_room_layers:
 		layer.queue_free()
 	
 	# Offset the rest of nodes
 	# TODO: Shouldn't be $LayerMiddle
-	var local_offset = tile_offset * layers[1].tile_set.tile_size
+	var local_offset: Vector2 = (upper_left_corner - tile_offset) * layers[1].tile_set.tile_size
 
 	for anchor_point in new_room.anchor_points:
-		anchor_point.position -= Vector2(local_offset.x, local_offset.y)
+		anchor_point.position += local_offset
 	for entity in new_room.entities:
-		entity.position -= Vector2(local_offset.x, local_offset.y)
+		entity.position += local_offset
 	
 	add_child(new_room)
 
@@ -84,29 +92,31 @@ func generate_spawn() -> Room:
 
 ## @func generate_branch
 ## @desc goes to an `AnchorPoint` and starts generating `Room`s, unless the step exceeds `max_branch_size`
-func generate_branch(anchor_point: AnchorPoint, step: int) -> void:
+func generate_branch(previous_anchor_point: AnchorPoint, step: int) -> void:
 	if step >= max_branch_size: return
-	if anchor_point.desired_tags.size() == 0: return
+	if previous_anchor_point.desired_tags.size() == 0: return
 
-	var desired_tag: StringName = anchor_point.desired_tags.pick_random()
-	var next_direction: Direction.Type = Direction.opposite(anchor_point.direction_towards_center)
-	var room_data: RoomData = room_manager.get_rooms_pointing(desired_tag, next_direction).pick_random()
+	var next_direction: Direction.Type = previous_anchor_point.get_outwards_direction()
+	var room_data: RoomData = room_manager.get_rooms_pointing(previous_anchor_point.select_tag(), previous_anchor_point.get_outwards_direction()).pick_random()
 
 	# No suitable room
 	if room_data == null: return
 
+	# Get upper left corner
 	# TODO: should refactor `AnchorPoint` to MAYBE make then a tile instead of a `Marker2D`, should in theory be easier than transforming local_to_map
-	var selected_anchor_point_local_position: Vector2i = room_data.anchor_points[next_direction].pick_random()
-	var room: Room = room_data.load()
-	var anchor_point_position: Vector2i = room.layers[1].local_to_map(anchor_point.position)
-	var upper_left_corner: Vector2i = anchor_point_position + Direction.as_vector(next_direction) - selected_anchor_point_local_position
+	# Picks a random `AnchorPoint`'s position that is pointing to `next_direction`
+	var next_anchor_point_local_position: Vector2i = room_data.anchor_points[next_direction].pick_random()
+	# Tile position of the next `AnchorPoint`
+	var connection_position: Vector2i = layers[1].local_to_map(previous_anchor_point.position) + Direction.as_vector(next_direction)
+	# When substracting `next_anchor_point_local_position` we get `upper_left_corner`
+	var upper_left_corner: Vector2i = connection_position - next_anchor_point_local_position
 
 	# FIXME make sure anchor_points are not repeated
-	if can_put_room(room, upper_left_corner):
+	if can_put_room(room_data, upper_left_corner):
+		var room: Room = room_data.load()
 		put_room(room, upper_left_corner)
-		var new_anchor_points: Array[AnchorPoint] = room.anchor_points
-		for new_anchor_point in new_anchor_points:
-			generate_branch(new_anchor_point, step + 1)
+		for anchor_point in room.anchor_points:
+			generate_branch(anchor_point, step + 1)
 
 ## @func generate_floor
 ## @desc main function for `Floor` generation
