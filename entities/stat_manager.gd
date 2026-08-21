@@ -30,6 +30,9 @@ var dodge_invulnerability_frames: Stat
 var rage_max_seconds: Stat
 
 @export
+var rage_damage_bonus: Stat
+
+@export
 var rage_when_killed: Stat
 
 @export
@@ -50,6 +53,7 @@ func get_as_array() -> Array[Stat]:
 			dodge_perfect_frames,
 			dodge_invulnerability_frames,
 			rage_max_seconds,
+			rage_damage_bonus,
 			rage_when_killed,
 			rage_bonus_on_kill,
 			rage_per_dodge,
