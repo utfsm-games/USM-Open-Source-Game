@@ -24,4 +24,4 @@ Y el equipamiento cambia entre las runs:
 
   ### ¿Como aportar?
 
-  [guia de contribucion] (CONTRIBUTING.md) 
+  [guia de contribucion](CONTRIBUTING.md) 
